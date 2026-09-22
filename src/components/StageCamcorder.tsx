@@ -63,10 +63,10 @@ export const StageCamcorder: React.FC<StageCamcorderProps> = ({ onReturn }) => {
 
   return (
     <div className="relative w-screen h-screen overflow-hidden select-none bg-black font-mono">
-      {/* 1. POV BACKGROUND: DIM, ABANDONED ROOM */}
+      {/* 1. POV BACKGROUND: ATTACHED ABANDONED ROOM */}
       <div 
-        className="absolute inset-0 bg-cover bg-center brightness-[0.22] contrast-150 filter blur-[2px]"
-        style={{ backgroundImage: "url('/assets/crime_scene.jpg')" }}
+        className="absolute inset-0 bg-cover bg-center brightness-[0.45] contrast-125 transition-all duration-700"
+        style={{ backgroundImage: "url('/assets/archive_room.jpg')" }}
       />
       {/* Flashlight beam vignette */}
       <div className="absolute inset-0 bg-radial-gradient from-transparent via-black/60 to-black pointer-events-none" />
