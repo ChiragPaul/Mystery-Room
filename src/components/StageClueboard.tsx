@@ -9,9 +9,10 @@ import { Crosshair, FileSearch } from 'lucide-react';
 
 interface StageClueboardProps {
   onOpenArchive: () => void;
+  onOpenFileRoom: () => void;
 }
 
-export const StageClueboard: React.FC<StageClueboardProps> = ({ onOpenArchive }) => {
+export const StageClueboard: React.FC<StageClueboardProps> = ({ onOpenArchive, onOpenFileRoom }) => {
   const [selectedEvidence, setSelectedEvidence] = useState<EvidenceItem | null>(null);
   const [, setInspectedIds] = useState<Set<string>>(new Set());
   const boardRef = useRef<HTMLDivElement>(null);
@@ -37,6 +38,42 @@ export const StageClueboard: React.FC<StageClueboardProps> = ({ onOpenArchive })
       ref={boardRef}
       className="relative w-screen h-screen overflow-hidden select-none bg-[#0e0e11] flex flex-col justify-between"
     >
+      {/* TOP-RIGHT MANILA FOLDER CASE ARCHIVES TAB */}
+      <button
+        onClick={() => {
+          sound.playStampSlam();
+          sound.playTechClick(1.2);
+          onOpenFileRoom();
+        }}
+        onMouseEnter={() => sound.playHoverTick()}
+        className="fixed top-6 right-6 z-50 group cursor-pointer outline-none focus:outline-none"
+        title="Open Case Report Archives (Previous Years)"
+      >
+        <div className="relative flex items-center bg-[#c8a876] hover:bg-inkred text-neutral-900 hover:text-white px-5 py-2.5 rounded-b-md border-b-2 border-x-2 border-black/80 shadow-[0_8px_25px_rgba(0,0,0,0.85)] transition-all duration-200 group-hover:translate-y-1.5 group-hover:shadow-[0_0_30px_rgba(229,9,20,0.7)]">
+          {/* Metallic Paperclip SVG graphic */}
+          <svg 
+            className="absolute -top-3 left-3 w-6 h-10 text-neutral-300 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] pointer-events-none" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="currentColor" 
+            strokeWidth="2.5" 
+            strokeLinecap="round" 
+            strokeLinejoin="round"
+          >
+            <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48" />
+          </svg>
+
+          <div className="flex items-center gap-2 pl-4">
+            <span className="font-stencil tracking-[0.22em] text-xs sm:text-sm font-black uppercase select-none">
+              CASE ARCHIVES
+            </span>
+            <span className="px-1.5 py-0.2 bg-red-800 text-white font-mono text-[9px] font-bold tracking-tighter uppercase rounded-xs">
+              TOP SECRET
+            </span>
+          </div>
+        </div>
+      </button>
+
       {/* LEFT-SIDE ARCHIVE LINK (Authentic yellowed masking tape / vintage physical tab) */}
       <button
         onClick={() => {

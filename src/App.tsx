@@ -4,6 +4,7 @@ import type { GameStage } from './types';
 import { StageCinematic } from './components/StageCinematic';
 import { StageClueboard } from './components/StageClueboard';
 import { StageCamcorder } from './components/StageCamcorder';
+import { StageFileRoom } from './components/StageFileRoom';
 
 export function App() {
   const [stage, setStage] = useState<GameStage>('STAGE_CINEMATIC');
@@ -14,6 +15,10 @@ export function App() {
 
   const goToCamcorder = () => {
     setStage('STAGE_CAMCORDER');
+  };
+
+  const goToFileRoom = () => {
+    setStage('STAGE_FILEROOM');
   };
 
   const returnToClueboard = () => {
@@ -46,7 +51,7 @@ export function App() {
             transition={{ duration: 0.6 }}
             className="w-full h-full"
           >
-            <StageClueboard onOpenArchive={goToCamcorder} />
+            <StageClueboard onOpenArchive={goToCamcorder} onOpenFileRoom={goToFileRoom} />
           </motion.div>
         )}
 
@@ -60,6 +65,19 @@ export function App() {
             className="w-full h-full"
           >
             <StageCamcorder onReturn={returnToClueboard} />
+          </motion.div>
+        )}
+
+        {stage === 'STAGE_FILEROOM' && (
+          <motion.div
+            key="fileroom"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className="w-full h-full"
+          >
+            <StageFileRoom onReturn={returnToClueboard} />
           </motion.div>
         )}
       </AnimatePresence>

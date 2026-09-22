@@ -1,4 +1,25 @@
-export type GameStage = 'STAGE_LOCKED' | 'STAGE_CINEMATIC' | 'STAGE_CLUEBOARD' | 'STAGE_CAMCORDER';
+export type GameStage = 'STAGE_LOCKED' | 'STAGE_CINEMATIC' | 'STAGE_CLUEBOARD' | 'STAGE_CAMCORDER' | 'STAGE_FILEROOM';
+
+export interface CaseReport {
+  id: string;
+  year: string;
+  codename: string;
+  status: 'SOLVED' | 'COLD CASE' | 'CLASSIFIED';
+  date: string;
+  location: string;
+  leadInvestigator: string;
+  summary: string;
+  videoUrl: string;
+  videoTitle: string;
+  photos: {
+    url: string;
+    caption: string;
+    rotation: number;
+  }[];
+  caseNotes: string[];
+  solvedTime?: string;
+  stampText: string;
+}
 
 export interface EvidenceItem {
   id: string;
