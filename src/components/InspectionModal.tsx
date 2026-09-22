@@ -125,10 +125,10 @@ export const InspectionModal: React.FC<InspectionModalProps> = ({ evidence, onCl
           onClose();
         }}
         className={`
-          absolute top-6 right-8 z-50 flex items-center gap-2 px-4 py-2 
+          absolute top-3 right-4 sm:top-6 sm:right-8 z-50 flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 
           bg-noir-900 border-2 border-white/40 text-stark 
           hover:border-inkred hover:bg-inkred hover:text-white 
-          font-stencil text-sm tracking-[0.2em] uppercase transition-all duration-150
+          font-stencil text-xs sm:text-sm tracking-[0.2em] uppercase transition-all duration-150
           shadow-[0_0_20px_rgba(0,0,0,0.8)]
         `}
         style={{
@@ -136,11 +136,11 @@ export const InspectionModal: React.FC<InspectionModalProps> = ({ evidence, onCl
         }}
       >
         <span>CLOSE [ESC]</span>
-        <X className="w-5 h-5 text-inkred group-hover:text-white" />
+        <X className="w-4 h-4 sm:w-5 sm:h-5 text-inkred group-hover:text-white" />
       </button>
 
       {/* Main Inspection Modal Container */}
-      <div className="relative z-40 w-[95vw] max-w-6xl h-[88vh] flex flex-col md:flex-row items-stretch gap-6 pointer-events-auto">
+      <div className="relative z-40 w-[96vw] max-w-6xl h-[90vh] md:h-[88vh] flex flex-col md:flex-row items-stretch gap-4 sm:gap-6 pointer-events-auto overflow-y-auto md:overflow-visible p-1">
         {/* Left Side: Scaled-up Zoomed Image or Memo Exhibit */}
         <motion.div
           layoutId={`card-container-${evidence.id}`}

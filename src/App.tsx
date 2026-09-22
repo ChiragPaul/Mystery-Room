@@ -5,6 +5,7 @@ import { StageCinematic } from './components/StageCinematic';
 import { StageClueboard } from './components/StageClueboard';
 import { StageCamcorder } from './components/StageCamcorder';
 import { StageFileRoom } from './components/StageFileRoom';
+import { RotatePhonePrompt } from './components/RotatePhonePrompt';
 
 export function App() {
   const [stage, setStage] = useState<GameStage>('STAGE_CINEMATIC');
@@ -27,6 +28,9 @@ export function App() {
 
   return (
     <main className="w-screen h-screen overflow-hidden select-none bg-black text-stark font-mono relative">
+      {/* Mobile Orientation Helper Prompt */}
+      <RotatePhonePrompt />
+
       <AnimatePresence mode="wait">
 
         {stage === 'STAGE_CINEMATIC' && (

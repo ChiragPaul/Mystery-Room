@@ -175,16 +175,16 @@ export const StageCinematic: React.FC<StageCinematicProps> = ({ onComplete }) =>
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="relative z-30 flex flex-col items-center text-center px-8 py-8 sm:py-10 max-w-2xl bg-black/85 backdrop-blur-md border-2 border-white/20 shadow-[0_0_80px_rgba(0,0,0,0.95)]"
+            className="relative z-30 flex flex-col items-center text-center w-[92vw] sm:w-auto max-w-2xl px-5 sm:px-8 py-6 sm:py-10 bg-black/85 backdrop-blur-md border-2 border-white/20 shadow-[0_0_80px_rgba(0,0,0,0.95)]"
           >
             {/* Pulsing indicator tag */}
-            <div className="flex items-center gap-2 mb-4 px-4 py-1.5 bg-black border-2 border-inkred text-white font-mono text-xs tracking-widest uppercase shadow-[0_0_15px_rgba(229,9,20,0.6)]">
-              <Crosshair className="w-4 h-4 text-inkred animate-spin" style={{ animationDuration: '6s' }} />
+            <div className="flex items-center gap-2 mb-3 sm:mb-4 px-3 sm:px-4 py-1 sm:py-1.5 bg-black border-2 border-inkred text-white font-mono text-[10px] sm:text-xs tracking-widest uppercase shadow-[0_0_15px_rgba(229,9,20,0.6)]">
+              <Crosshair className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-inkred animate-spin" style={{ animationDuration: '6s' }} />
               <span className="font-bold">SCENE 1 CONCLUDED // SUSPECT ESCAPED</span>
             </div>
 
             {/* High-visibility dramatic prompt text */}
-            <h2 className="font-stencil text-2xl sm:text-3xl md:text-4xl text-white tracking-[0.16em] uppercase my-3 drop-shadow-[0_2px_10px_rgba(0,0,0,1)] leading-tight">
+            <h2 className="font-stencil text-xl sm:text-3xl md:text-4xl text-white tracking-[0.16em] uppercase my-2 sm:my-3 drop-shadow-[0_2px_10px_rgba(0,0,0,1)] leading-tight">
               THE CRIME SCENE IS SEALED.<br />
               <span className="text-inkred drop-shadow-[0_0_15px_rgba(229,9,20,0.8)]">THE TRUTH AWAITS.</span>
             </h2>
@@ -194,7 +194,7 @@ export const StageCinematic: React.FC<StageCinematicProps> = ({ onComplete }) =>
               onClick={handleReadyToInvestigate}
               onMouseEnter={() => sound.playHoverTick()}
               className={`
-                group relative mt-4 px-8 sm:px-12 py-5 uppercase font-stencil text-2xl sm:text-3xl md:text-4xl tracking-[0.2em]
+                group relative mt-3 sm:mt-4 px-6 sm:px-12 py-3.5 sm:py-5 uppercase font-stencil text-xl sm:text-3xl md:text-4xl tracking-[0.2em]
                 transition-all duration-200 outline-none
                 bg-black border-4 border-white text-white
                 hover:border-inkred-glow hover:text-white
@@ -203,20 +203,20 @@ export const StageCinematic: React.FC<StageCinematicProps> = ({ onComplete }) =>
                 hover:scale-[1.02] active:scale-[0.98]
               `}
               style={{
-                clipPath: 'polygon(14px 0%, 100% 0%, calc(100% - 14px) 100%, 0% 100%)',
+                clipPath: 'polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%)',
               }}
             >
               {/* Background red sweep */}
               <span className="absolute inset-0 bg-inkred opacity-0 group-hover:opacity-90 transition-opacity duration-200" />
 
               {/* Text content */}
-              <span className="relative z-10 flex items-center justify-center gap-3 font-bold">
+              <span className="relative z-10 flex items-center justify-center gap-2 sm:gap-3 font-bold">
                 <span>ARE YOU READY TO INVESTIGATE</span>
-                <ArrowRight className="w-7 h-7 transition-transform group-hover:translate-x-1.5" />
+                <ArrowRight className="w-5 h-5 sm:w-7 sm:h-7 transition-transform group-hover:translate-x-1.5" />
               </span>
             </button>
 
-            <span className="font-mono text-xs text-neutral-300 tracking-widest mt-5 px-3 py-1 bg-black/70 border border-neutral-700 uppercase">
+            <span className="font-mono text-[10px] sm:text-xs text-neutral-300 tracking-widest mt-4 px-3 py-1 bg-black/70 border border-neutral-700 uppercase">
               [ CLICK TO INITIATE SCENE 2 PROTOCOL ]
             </span>
           </motion.div>
@@ -243,14 +243,14 @@ export const StageCinematic: React.FC<StageCinematicProps> = ({ onComplete }) =>
 
             <div className="flex items-center gap-2 mb-2">
               <ShieldAlert className="w-4 h-4 text-[#8B0000]" />
-              <span className="font-mono text-xs tracking-[0.3em] uppercase text-neutral-400">
+              <span className="font-mono text-[10px] sm:text-xs tracking-[0.3em] uppercase text-neutral-400">
                 CLASSIFIED CRIME ARCHIVE // LEVEL 4
               </span>
             </div>
 
             {/* MYSTERY ROOM TITLE IN DEEP RED */}
             <h1
-              className="font-stencil text-6xl sm:text-7xl md:text-9xl tracking-[0.16em] uppercase select-none leading-none my-2"
+              className="font-stencil text-5xl sm:text-7xl md:text-9xl tracking-[0.16em] uppercase select-none leading-none my-2"
               style={{
                 color: '#8B0000',
                 textShadow: '0 0 25px rgba(139, 0, 0, 0.9), 0 0 50px rgba(100, 0, 0, 0.7), 0 10px 40px rgba(0, 0, 0, 0.95)',
@@ -265,7 +265,7 @@ export const StageCinematic: React.FC<StageCinematicProps> = ({ onComplete }) =>
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.35, duration: 0.5 }}
-              className="font-mono text-xs sm:text-sm md:text-base text-[#ff4d4d] tracking-[0.35em] uppercase font-bold mt-1 mb-8"
+              className="font-mono text-xs sm:text-sm md:text-base text-[#ff4d4d] tracking-[0.35em] uppercase font-bold mt-1 mb-6 sm:mb-8"
               style={{
                 textShadow: '0 0 12px rgba(255, 77, 77, 0.6)',
               }}
@@ -283,7 +283,7 @@ export const StageCinematic: React.FC<StageCinematicProps> = ({ onComplete }) =>
                 onClick={handleContinueToScene3}
                 onMouseEnter={() => sound.playHoverTick()}
                 className={`
-                  group relative px-10 sm:px-14 py-4 uppercase font-stencil text-xl sm:text-2xl md:text-3xl tracking-[0.25em]
+                  group relative px-8 sm:px-14 py-3 sm:py-4 uppercase font-stencil text-lg sm:text-2xl md:text-3xl tracking-[0.25em]
                   transition-all duration-200 outline-none
                   bg-black/85 border-2 border-[#8B0000] text-stark
                   hover:border-red-600 hover:bg-[#8B0000] hover:text-white
@@ -295,9 +295,9 @@ export const StageCinematic: React.FC<StageCinematicProps> = ({ onComplete }) =>
                   clipPath: 'polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%)',
                 }}
               >
-                <span className="flex items-center justify-center gap-3">
+                <span className="flex items-center justify-center gap-2.5 sm:gap-3">
                   <span>CONTINUE</span>
-                  <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-1.5" />
+                  <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 transition-transform group-hover:translate-x-1.5" />
                 </span>
               </button>
 
