@@ -1,0 +1,161 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    cursor: default;
+  }
+
+  body {
+    background-color: #0a0a0a;
+    color: #f4f4f5;
+    font-family: 'JetBrains Mono', monospace;
+    overflow: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  /* Custom scrollbar for dossiers */
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #111113;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #e50914;
+  }
+}
+
+/* Scanlines overlay */
+.scanlines {
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.4) 50%
+  );
+  background-size: 100% 4px;
+  z-index: 40;
+  pointer-events: none;
+}
+
+/* Vignette effect */
+.vignette {
+  box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.95);
+  pointer-events: none;
+}
+
+/* Subtle dot-matrix background */
+.dot-matrix {
+  background-image: radial-gradient(rgba(244, 244, 245, 0.12) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Sharp angled clips for Persona 5 / Indie Detective feel */
+.clip-diagonal {
+  clip-path: polygon(0 0, 100% 0, calc(100% - 16px) 100%, 0 100%);
+}
+
+.clip-diagonal-rev {
+  clip-path: polygon(16px 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.clip-tag {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
+}
+
+.clip-badge {
+  clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+}
+
+/* Red / Cyan Chromatic Glitch effect */
+.chromatic-glitch {
+  position: relative;
+  text-shadow: -2px 0 #ff003c, 2px 0 #00e5ff;
+}
+
+@keyframes glitch-anim {
+  0% {
+    clip-path: inset(40% 0 61% 0);
+    transform: skew(0.3deg);
+  }
+  20% {
+    clip-path: inset(92% 0 1% 0);
+    transform: skew(-0.5deg);
+  }
+  40% {
+    clip-path: inset(10% 0 80% 0);
+    transform: skew(0.8deg);
+  }
+  60% {
+    clip-path: inset(70% 0 15% 0);
+    transform: skew(-0.3deg);
+  }
+  80% {
+    clip-path: inset(25% 0 58% 0);
+    transform: skew(0.5deg);
+  }
+  100% {
+    clip-path: inset(54% 0 30% 0);
+    transform: skew(0deg);
+  }
+}
+
+.glitch-active::before,
+.glitch-active::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch-active::before {
+  left: 2px;
+  text-shadow: -2px 0 #e50914;
+  animation: glitch-anim 2.5s infinite linear alternate-reverse;
+}
+
+.glitch-active::after {
+  left: -2px;
+  text-shadow: 2px 0 #00ffff;
+  animation: glitch-anim 2s infinite linear alternate-reverse;
+}
+
+/* Crime tape strip */
+.crime-tape {
+  background: repeating-linear-gradient(
+    -45deg,
+    #e50914,
+    #e50914 15px,
+    #0a0a0a 15px,
+    #0a0a0a 30px
+  );
+}
+
+/* Sharp high-contrast button */
+.btn-noir {
+  position: relative;
+  background: transparent;
+  color: #f4f4f5;
+  border: 2px solid #f4f4f5;
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  font-family: 'Anton', sans-serif;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.btn-noir:hover {
+  background: #e50914;
+  border-color: #e50914;
+  color: #ffffff;
+  box-shadow: 0 0 25px rgba(229, 9, 20, 0.6), inset 0 0 10px rgba(0, 0, 0, 0.5);
+  transform: translate(-2px, -2px);
+}
+
+.btn-noir:active {
+  transform: translate(1px, 1px);
+}
