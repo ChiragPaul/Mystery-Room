@@ -51,7 +51,7 @@ export const EvidenceCard: React.FC<EvidenceCardProps> = ({
         rotate: evidence.boardPos.rotation,
       }}
       transition={{ duration: 0.4 }}
-      className="absolute w-56 md:w-64 lg:w-72 select-none cursor-pointer z-20 group"
+      className="absolute w-36 sm:w-48 md:w-60 lg:w-72 select-none cursor-pointer z-20 group"
       onClick={() => {
         sound.playTechClick(1.2);
         onClick();
@@ -70,8 +70,8 @@ export const EvidenceCard: React.FC<EvidenceCardProps> = ({
         className="
           relative bg-[#18181b] border-2 border-neutral-700 
           group-hover:border-inkred transition-colors duration-150
-          shadow-[8px_8px_0px_#000000,10px_10px_0px_rgba(229,9,20,0.5)]
-          p-3 flex flex-col
+          shadow-[6px_6px_0px_#000000,8px_8px_0px_rgba(229,9,20,0.5)]
+          p-2 sm:p-3 flex flex-col
         "
         style={{
           clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%)',
@@ -79,18 +79,18 @@ export const EvidenceCard: React.FC<EvidenceCardProps> = ({
       >
         {/* Red Pin Anchor at top center */}
         <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center">
-          <div className="w-4 h-4 rounded-full bg-inkred shadow-[0_0_8px_rgba(229,9,20,0.9)] border-2 border-stark flex items-center justify-center">
-            <Pin className="w-2.5 h-2.5 text-white" />
+          <div className="w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full bg-inkred shadow-[0_0_8px_rgba(229,9,20,0.9)] border-2 border-stark flex items-center justify-center">
+            <Pin className="w-2 h-2 sm:w-2.5 sm:h-2.5 text-white" />
           </div>
-          <div className="w-0.5 h-2 bg-neutral-400" />
+          <div className="w-0.5 h-1.5 sm:h-2 bg-neutral-400" />
         </div>
 
         {/* Card Header Tag */}
-        <div className="flex items-center justify-between border-b border-neutral-800 pb-2 mb-2 pt-1">
-          <span className="font-mono text-[10px] text-inkred font-bold tracking-widest uppercase">
+        <div className="flex items-center justify-between border-b border-neutral-800 pb-1 sm:pb-2 mb-1 sm:mb-2 pt-0.5 sm:pt-1">
+          <span className="font-mono text-[8px] sm:text-[10px] text-inkred font-bold tracking-widest uppercase">
             {evidence.tag}
           </span>
-          <span className="font-mono text-[9px] text-neutral-400 tracking-wider">
+          <span className="font-mono text-[8px] sm:text-[9px] text-neutral-400 tracking-wider">
             [INSPECT]
           </span>
         </div>
@@ -108,30 +108,30 @@ export const EvidenceCard: React.FC<EvidenceCardProps> = ({
 
             {/* Hover magnifying overlay */}
             <div className="absolute inset-0 bg-inkred/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-              <div className="p-2 bg-black/80 border border-inkred text-white flex items-center gap-1 font-mono text-[10px] tracking-widest uppercase">
-                <Search className="w-3 h-3 text-inkred" />
+              <div className="p-1 sm:p-2 bg-black/80 border border-inkred text-white flex items-center gap-1 font-mono text-[8px] sm:text-[10px] tracking-widest uppercase">
+                <Search className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-inkred" />
                 <span>EXAMINE</span>
               </div>
             </div>
           </div>
         ) : (
           /* Memo Classified Document preview */
-          <div className="relative aspect-[4/3] w-full bg-[#121214] border border-neutral-800 p-3 font-mono text-[10px] text-neutral-300 flex flex-col justify-between">
+          <div className="relative aspect-[4/3] w-full bg-[#121214] border border-neutral-800 p-2 sm:p-3 font-mono text-[9px] sm:text-[10px] text-neutral-300 flex flex-col justify-between">
             <div className="space-y-1">
-              <div className="flex items-center justify-between border-b border-neutral-700 pb-1 text-neutral-400 text-[9px]">
-                <span>CONFIDENTIAL DEPT</span>
+              <div className="flex items-center justify-between border-b border-neutral-700 pb-0.5 sm:pb-1 text-neutral-400 text-[8px] sm:text-[9px]">
+                <span>CONFIDENTIAL</span>
                 <span className="text-inkred font-bold">CASE-804</span>
               </div>
-              <p className="text-stark/90 leading-tight pt-1">
-                MEMORANDUM: Incident in Suite 404. All personnel are directed to analyze evidence files immediately.
+              <p className="text-stark/90 leading-tight pt-0.5 text-[8px] sm:text-[10px]">
+                MEMORANDUM: Incident in Suite 404. All personnel analyze evidence.
               </p>
-              <div className="text-[8px] text-neutral-500 font-mono">
-                &gt; RULE 1: Connect suspect alibis to forensics.<br/>
-                &gt; RULE 2: Decrypt the restricted safe.
+              <div className="hidden sm:block text-[8px] text-neutral-500 font-mono">
+                &gt; RULE 1: Connect suspect alibis.<br/>
+                &gt; RULE 2: Decrypt safe.
               </div>
             </div>
             <div className="flex justify-end">
-              <div className="px-2 py-0.5 border border-inkred text-inkred font-stencil text-[10px] tracking-widest uppercase">
+              <div className="px-1.5 sm:px-2 py-0.5 border border-inkred text-inkred font-stencil text-[8px] sm:text-[10px] tracking-widest uppercase">
                 CONFIDENTIAL
               </div>
             </div>
@@ -139,26 +139,26 @@ export const EvidenceCard: React.FC<EvidenceCardProps> = ({
         )}
 
         {/* Card Title & Snippet */}
-        <div className="mt-2.5">
-          <h3 className="font-stencil text-base text-stark tracking-wider uppercase truncate group-hover:text-inkred transition-colors">
+        <div className="mt-1.5 sm:mt-2.5">
+          <h3 className="font-stencil text-xs sm:text-base text-stark tracking-wider uppercase truncate group-hover:text-inkred transition-colors">
             {evidence.title}
           </h3>
-          <p className="font-mono text-[10px] text-neutral-400 mt-1 line-clamp-2 leading-tight">
+          <p className="font-mono text-[8px] sm:text-[10px] text-neutral-400 mt-0.5 sm:mt-1 line-clamp-1 sm:line-clamp-2 leading-tight">
             {evidence.shortSnippet}
           </p>
         </div>
 
         {/* Stamp Badge */}
-        <div className="mt-2.5 flex items-center justify-between">
+        <div className="mt-1.5 sm:mt-2.5 flex items-center justify-between">
           <span
             className={`
-              font-stencil text-[10px] tracking-widest px-2 py-0.5 border uppercase
+              font-stencil text-[8px] sm:text-[10px] tracking-widest px-1.5 sm:px-2 py-0.5 border uppercase
               ${evidence.stampColor === 'red' ? 'border-inkred text-inkred bg-inkred/10' : 'border-amberdoc text-amberdoc bg-amberdoc/10'}
             `}
           >
             {evidence.stamp}
           </span>
-          <span className="font-mono text-[9px] text-neutral-500">
+          <span className="font-mono text-[8px] sm:text-[9px] text-neutral-500">
             PIN #0{evidence.id.length}
           </span>
         </div>

@@ -62,7 +62,7 @@ export const StageCamcorder: React.FC<StageCamcorderProps> = ({ onReturn }) => {
   };
 
   return (
-    <div className="relative w-screen h-screen overflow-hidden select-none bg-black font-mono">
+    <div className="relative w-full h-[100dvh] max-h-[100dvh] overflow-hidden select-none bg-black font-mono">
       {/* 1. POV BACKGROUND: ATTACHED ABANDONED ROOM */}
       <div 
         className="absolute inset-0 bg-cover bg-center brightness-[0.45] contrast-125 transition-all duration-700"
@@ -76,10 +76,10 @@ export const StageCamcorder: React.FC<StageCamcorderProps> = ({ onReturn }) => {
         onClick={handleReturnClick}
         onMouseEnter={() => sound.playHoverTick()}
         className={`
-          fixed top-6 left-6 z-50 flex items-center gap-2.5 px-4 py-2.5
+          fixed top-2 left-2 sm:top-6 sm:left-6 z-50 flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2.5
           bg-noir-900/90 border-2 border-white/80 text-stark
           hover:border-inkred hover:bg-inkred hover:text-white
-          font-stencil text-sm sm:text-base tracking-[0.2em] uppercase
+          font-stencil text-xs sm:text-base tracking-[0.16em] sm:tracking-[0.2em] uppercase
           shadow-[0_0_20px_rgba(0,0,0,0.8)] hover:shadow-[0_0_25px_rgba(229,9,20,0.7)]
           transition-all duration-150 outline-none
         `}
@@ -92,8 +92,8 @@ export const StageCamcorder: React.FC<StageCamcorderProps> = ({ onReturn }) => {
       </button>
 
       {/* Top right indicator */}
-      <div className="fixed top-6 right-6 z-40 flex items-center gap-3 bg-black/70 px-3 py-1.5 border border-white/10 text-xs text-neutral-400 font-mono tracking-widest uppercase">
-        <Disc className="w-3.5 h-3.5 text-inkred animate-spin" style={{ animationDuration: '4s' }} />
+      <div className="fixed top-2 right-2 sm:top-6 sm:right-6 z-40 flex items-center gap-2 sm:gap-3 bg-black/70 px-2.5 py-1 sm:px-3 sm:py-1.5 border border-white/10 text-[10px] sm:text-xs text-neutral-400 font-mono tracking-widest uppercase">
+        <Disc className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-inkred animate-spin" style={{ animationDuration: '4s' }} />
         <span>ARCHIVE TAPE: 2025 INCIDENT</span>
       </div>
 
@@ -108,7 +108,7 @@ export const StageCamcorder: React.FC<StageCamcorderProps> = ({ onReturn }) => {
         className="absolute inset-0 flex items-center justify-center p-4 sm:p-10 pointer-events-none"
       >
         {/* Handheld Camcorder Realistic Chassis */}
-        <div className="relative pointer-events-auto flex items-center bg-[#151518] border-4 border-[#2c2c34] rounded-2xl p-4 sm:p-8 shadow-[0_20px_60px_rgba(0,0,0,0.95),inset_0_2px_4px_rgba(255,255,255,0.1)] max-w-4xl w-full">
+        <div className="relative pointer-events-auto flex items-center bg-[#151518] border-4 border-[#2c2c34] rounded-2xl p-2.5 sm:p-8 shadow-[0_20px_60px_rgba(0,0,0,0.95),inset_0_2px_4px_rgba(255,255,255,0.1)] max-w-4xl w-full max-h-[86dvh]">
           
           {/* Camcorder Left Hinged Swivel Frame */}
           <div className="relative flex-1 bg-black rounded-lg p-2 sm:p-3 border-2 border-neutral-700 shadow-inner">
@@ -243,7 +243,7 @@ export const StageCamcorder: React.FC<StageCamcorderProps> = ({ onReturn }) => {
         {isFullScreen && (
           <motion.div
             layoutId="camcorder-lcd-screen"
-            className="fixed inset-0 z-40 w-screen h-screen bg-black overflow-hidden flex items-center justify-center"
+            className="fixed inset-0 z-40 w-full h-[100dvh] max-h-[100dvh] bg-black overflow-hidden flex items-center justify-center"
             transition={{ type: 'spring', damping: 26, stiffness: 220 }}
           >
             {/* The Fullscreen Video Playing with Audio */}
@@ -260,7 +260,7 @@ export const StageCamcorder: React.FC<StageCamcorderProps> = ({ onReturn }) => {
             <div className="absolute inset-0 vignette opacity-50 pointer-events-none" />
 
             {/* High-Tech Camcorder Fullscreen HUD */}
-            <div className="absolute inset-0 p-8 sm:p-12 flex flex-col justify-between pointer-events-none">
+            <div className="absolute inset-0 p-3 sm:p-12 flex flex-col justify-between pointer-events-none">
               {/* Top HUD */}
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3 bg-black/70 px-4 py-1.5 border border-white/20 backdrop-blur-sm">

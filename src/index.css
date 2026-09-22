@@ -8,13 +8,21 @@
     cursor: default;
   }
 
+  html, body, #root {
+    width: 100%;
+    height: 100dvh;
+    min-height: 100dvh;
+    max-height: 100dvh;
+    overflow: hidden;
+  }
+
   body {
     background-color: #0a0a0a;
     color: #f4f4f5;
     font-family: 'JetBrains Mono', monospace;
-    overflow: hidden;
     user-select: none;
     -webkit-user-select: none;
+    touch-action: manipulation;
   }
 
   /* Custom scrollbar for dossiers */

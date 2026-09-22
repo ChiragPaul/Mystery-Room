@@ -32,7 +32,7 @@ export const StageFileRoom: React.FC<StageFileRoomProps> = ({ onReturn }) => {
   };
 
   return (
-    <div className="relative w-screen h-screen overflow-hidden select-none bg-[#111114] text-stark font-mono flex flex-col justify-between">
+    <div className="relative w-full h-[100dvh] max-h-[100dvh] overflow-hidden select-none bg-[#111114] text-stark font-mono flex flex-col justify-between">
       {/* 1. REALISTIC DARK WOOD DESK & CORKBOARD TEXTURE */}
       <div 
         className="absolute inset-0 opacity-25 pointer-events-none bg-repeat"
@@ -53,8 +53,8 @@ export const StageFileRoom: React.FC<StageFileRoomProps> = ({ onReturn }) => {
       </svg>
 
       {/* 2. TOP FULL-WIDTH POLICE CAUTION TAPE BANNER */}
-      <div className="relative z-40 w-full bg-[#f59e0b] text-black shadow-[0_4px_25px_rgba(0,0,0,0.9)] border-b-2 border-black overflow-hidden py-2">
-        <div className="flex items-center gap-8 whitespace-nowrap animate-marquee font-stencil text-xs sm:text-sm tracking-[0.28em] uppercase font-black">
+      <div className="relative z-40 w-full bg-[#f59e0b] text-black shadow-[0_4px_25px_rgba(0,0,0,0.9)] border-b-2 border-black overflow-hidden py-1 sm:py-2">
+        <div className="flex items-center gap-8 whitespace-nowrap animate-marquee font-stencil text-[10px] sm:text-sm tracking-[0.22em] sm:tracking-[0.28em] uppercase font-black">
           {Array.from({ length: 12 }).map((_, i) => (
             <span key={i} className="flex items-center gap-6">
               <span>★ POLICE LINE DO NOT CROSS ★</span>
@@ -66,7 +66,7 @@ export const StageFileRoom: React.FC<StageFileRoomProps> = ({ onReturn }) => {
       </div>
 
       {/* 3. TOP ACTION BAR (RETURN BUTTON & TERMINAL STATUS) */}
-      <div className="relative z-30 flex items-center justify-between px-6 sm:px-8 py-3 bg-black/70 backdrop-blur-md border-b border-white/10">
+      <div className="relative z-30 flex items-center justify-between px-3 sm:px-8 py-1.5 sm:py-3 bg-black/70 backdrop-blur-md border-b border-white/10">
         {/* Stylized Physical Return Button */}
         <button
           onClick={() => {
@@ -75,31 +75,31 @@ export const StageFileRoom: React.FC<StageFileRoomProps> = ({ onReturn }) => {
           }}
           onMouseEnter={() => sound.playHoverTick()}
           className={`
-            group flex items-center gap-2.5 px-4 py-2 bg-noir-900 border-2 border-white/80 text-stark
+            group flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 bg-noir-900 border-2 border-white/80 text-stark
             hover:border-inkred hover:bg-inkred hover:text-white
-            font-stencil text-xs sm:text-sm tracking-[0.2em] uppercase transition-all duration-150 outline-none
+            font-stencil text-xs sm:text-sm tracking-[0.16em] sm:tracking-[0.2em] uppercase transition-all duration-150 outline-none
             shadow-[0_0_15px_rgba(0,0,0,0.8)] hover:shadow-[0_0_20px_rgba(229,9,20,0.7)]
           `}
           style={{
             clipPath: 'polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%)',
           }}
         >
-          <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+          <ArrowLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform group-hover:-translate-x-1" />
           <span>← BACK TO CLUEBOARD</span>
         </button>
 
         {/* Status Badge */}
-        <div className="flex items-center gap-3 font-mono text-[11px] text-neutral-400">
-          <Terminal className="w-4 h-4 text-cyan-400" />
+        <div className="flex items-center gap-2 sm:gap-3 font-mono text-[10px] sm:text-[11px] text-neutral-400">
+          <Terminal className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cyan-400" />
           <span className="hidden sm:inline">CENTRAL EVIDENCE ARCHIVE // TERMINAL-08</span>
-          <span className="px-2 py-0.5 bg-cyan-950/80 border border-cyan-500/40 text-cyan-300 font-bold">
+          <span className="px-1.5 sm:px-2 py-0.5 bg-cyan-950/80 border border-cyan-500/40 text-cyan-300 font-bold">
             ONLINE
           </span>
         </div>
       </div>
 
       {/* 4. MAIN WORKSPACE: FOLDER STACK (LEFT) + DATABASE TERMINAL (RIGHT) */}
-      <div className="relative z-20 flex-1 flex flex-col lg:flex-row gap-6 p-4 sm:p-8 overflow-hidden">
+      <div className="relative z-20 flex-1 flex flex-col lg:flex-row gap-4 sm:gap-6 p-3 sm:p-8 overflow-y-auto lg:overflow-hidden">
         
         {/* LEFT COLUMN: PHYSICAL MANILA CASE FOLDERS & DESK STICKY NOTES */}
         <div className="w-full lg:w-96 flex flex-col justify-between shrink-0 gap-6">

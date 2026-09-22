@@ -36,7 +36,7 @@ export const StageClueboard: React.FC<StageClueboardProps> = ({ onOpenArchive, o
   return (
     <div
       ref={boardRef}
-      className="relative w-screen h-screen overflow-hidden select-none bg-[#0e0e11] flex flex-col justify-between"
+      className="relative w-full h-[100dvh] max-h-[100dvh] overflow-hidden select-none bg-[#0e0e11] flex flex-col justify-between"
     >
       {/* TOP-RIGHT MANILA FOLDER CASE ARCHIVES TAB */}
       <button
@@ -46,10 +46,10 @@ export const StageClueboard: React.FC<StageClueboardProps> = ({ onOpenArchive, o
           onOpenFileRoom();
         }}
         onMouseEnter={() => sound.playHoverTick()}
-        className="fixed top-6 right-6 z-50 group cursor-pointer outline-none focus:outline-none"
+        className="fixed top-2 right-2 sm:top-6 sm:right-6 z-50 group cursor-pointer outline-none focus:outline-none"
         title="Open Case Report Archives (Previous Years)"
       >
-        <div className="relative flex items-center bg-[#c8a876] hover:bg-inkred text-neutral-900 hover:text-white px-5 py-2.5 rounded-b-md border-b-2 border-x-2 border-black/80 shadow-[0_8px_25px_rgba(0,0,0,0.85)] transition-all duration-200 group-hover:translate-y-1.5 group-hover:shadow-[0_0_30px_rgba(229,9,20,0.7)]">
+        <div className="relative flex items-center bg-[#c8a876] hover:bg-inkred text-neutral-900 hover:text-white px-3 sm:px-5 py-1.5 sm:py-2.5 rounded-b-md border-b-2 border-x-2 border-black/80 shadow-[0_8px_25px_rgba(0,0,0,0.85)] transition-all duration-200 group-hover:translate-y-1.5 group-hover:shadow-[0_0_30px_rgba(229,9,20,0.7)]">
           {/* Metallic Paperclip SVG graphic */}
           <svg 
             className="absolute -top-3 left-3 w-6 h-10 text-neutral-300 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] pointer-events-none" 
@@ -124,10 +124,10 @@ export const StageClueboard: React.FC<StageClueboardProps> = ({ onOpenArchive, o
       />
 
       {/* Top Detective Status Banner (HUD) - Stylized indie game header */}
-      <div className="relative z-30 flex items-center justify-between px-6 py-4 bg-gradient-to-b from-[#0a0a0c]/90 via-[#0a0a0c]/70 to-transparent border-b border-white/5 pointer-events-auto">
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2 px-3 py-1 bg-inkred text-white font-stencil text-sm tracking-widest clip-diagonal shadow-[0_0_15px_rgba(229,9,20,0.5)]">
-            <Crosshair className="w-4 h-4 animate-pulse" />
+      <div className="relative z-30 flex items-center justify-between px-3 sm:px-6 py-1.5 sm:py-3 bg-gradient-to-b from-[#0a0a0c]/90 via-[#0a0a0c]/70 to-transparent border-b border-white/5 pointer-events-auto">
+        <div className="flex items-center gap-2 sm:gap-4">
+          <div className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-0.5 sm:py-1 bg-inkred text-white font-stencil text-xs sm:text-sm tracking-widest clip-diagonal shadow-[0_0_15px_rgba(229,9,20,0.5)]">
+            <Crosshair className="w-3.5 h-3.5 sm:w-4 sm:h-4 animate-pulse" />
             <span>CASE #804</span>
           </div>
           <div className="hidden sm:block">
@@ -222,9 +222,9 @@ export const StageClueboard: React.FC<StageClueboardProps> = ({ onOpenArchive, o
       </div>
 
       {/* Bottom HUD Hint Bar */}
-      <div className="relative z-30 px-6 py-3 bg-gradient-to-t from-[#0a0a0c] to-transparent border-t border-white/5 flex items-center justify-between text-neutral-500 font-mono text-[11px] pointer-events-none">
-        <div className="flex items-center gap-2">
-          <FileSearch className="w-3.5 h-3.5 text-inkred" />
+      <div className="relative z-30 px-3 sm:px-6 py-1.5 sm:py-2.5 bg-gradient-to-t from-[#0a0a0c] to-transparent border-t border-white/5 flex items-center justify-between text-neutral-500 font-mono text-[9px] sm:text-[11px] pointer-events-none">
+        <div className="flex items-center gap-1.5 sm:gap-2">
+          <FileSearch className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-inkred" />
           <span>CLICK ANY EXHIBIT TO ZOOM &amp; ACCESS DOSSIER HUD</span>
         </div>
         <div className="hidden sm:block uppercase tracking-widest text-[10px]">

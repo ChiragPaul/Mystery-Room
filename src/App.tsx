@@ -27,7 +27,7 @@ export function App() {
   };
 
   return (
-    <main className="w-screen h-screen overflow-hidden select-none bg-black text-stark font-mono relative">
+    <main className="w-full h-[100dvh] max-h-[100dvh] overflow-hidden select-none bg-black text-stark font-mono relative">
       {/* Mobile Orientation Helper Prompt */}
       <RotatePhonePrompt />
 
