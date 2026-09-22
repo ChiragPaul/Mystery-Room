@@ -132,13 +132,17 @@ export const StageCinematic: React.FC<StageCinematicProps> = ({ onComplete }) =>
 
       {/* 2. FINAL.PNG BACKGROUND FOR SCENE 1 ENDED (ARE YOU READY TO INVESTIGATE) */}
       {phase === 'SCENE_1_ENDED' && (
-        <motion.div
-          initial={{ opacity: 0, scale: 1.05 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="absolute inset-0 w-full h-full bg-cover bg-center z-0"
-          style={{ backgroundImage: "url('/assets/final.png')" }}
-        />
+        <>
+          <motion.div
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            className="absolute inset-0 w-full h-full bg-cover bg-center z-0 brightness-[0.7] contrast-125"
+            style={{ backgroundImage: "url('/assets/final.png')" }}
+          />
+          {/* Contrast vignette */}
+          <div className="absolute inset-0 bg-black/45 z-0 pointer-events-none" />
+        </>
       )}
 
       {/* 3. NAME.PNG BACKGROUND FOR NAME REVEAL PHASE */}
@@ -167,42 +171,32 @@ export const StageCinematic: React.FC<StageCinematicProps> = ({ onComplete }) =>
       <AnimatePresence>
         {phase === 'SCENE_1_ENDED' && (
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 30, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="relative z-30 flex flex-col items-center text-center px-6 max-w-2xl"
+            className="relative z-30 flex flex-col items-center text-center px-8 py-8 sm:py-10 max-w-2xl bg-black/85 backdrop-blur-md border-2 border-white/20 shadow-[0_0_80px_rgba(0,0,0,0.95)]"
           >
             {/* Pulsing indicator tag */}
-            <div className="flex items-center gap-2 mb-4 px-3 py-1 bg-inkred/20 border border-inkred text-inkred font-mono text-xs tracking-widest uppercase backdrop-blur-sm shadow-[0_0_20px_rgba(229,9,20,0.3)]">
-              <Crosshair className="w-3.5 h-3.5 animate-spin" style={{ animationDuration: '6s' }} />
-              <span>SCENE 1 CONCLUDED // SUSPECT ESCAPED</span>
+            <div className="flex items-center gap-2 mb-4 px-4 py-1.5 bg-black border-2 border-inkred text-white font-mono text-xs tracking-widest uppercase shadow-[0_0_15px_rgba(229,9,20,0.6)]">
+              <Crosshair className="w-4 h-4 text-inkred animate-spin" style={{ animationDuration: '6s' }} />
+              <span className="font-bold">SCENE 1 CONCLUDED // SUSPECT ESCAPED</span>
             </div>
 
-            {/* Dramatic prompt text */}
-            <motion.p
-              animate={{
-                opacity: [0.8, 1, 0.8],
-                textShadow: [
-                  '0 0 10px rgba(229,9,20,0.4)',
-                  '0 0 25px rgba(229,9,20,0.9)',
-                  '0 0 10px rgba(229,9,20,0.4)',
-                ],
-              }}
-              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-              className="font-mono text-base sm:text-lg md:text-xl text-stark/90 tracking-[0.25em] uppercase mb-8 font-semibold"
-            >
-              The crime scene is sealed. The truth awaits.
-            </motion.p>
+            {/* High-visibility dramatic prompt text */}
+            <h2 className="font-stencil text-2xl sm:text-3xl md:text-4xl text-white tracking-[0.16em] uppercase my-3 drop-shadow-[0_2px_10px_rgba(0,0,0,1)] leading-tight">
+              THE CRIME SCENE IS SEALED.<br />
+              <span className="text-inkred drop-shadow-[0_0_15px_rgba(229,9,20,0.8)]">THE TRUTH AWAITS.</span>
+            </h2>
 
             {/* ARE YOU READY TO INVESTIGATE BUTTON */}
             <button
               onClick={handleReadyToInvestigate}
               onMouseEnter={() => sound.playHoverTick()}
               className={`
-                group relative px-8 sm:px-12 py-5 uppercase font-stencil text-2xl sm:text-3xl md:text-4xl tracking-[0.2em]
+                group relative mt-4 px-8 sm:px-12 py-5 uppercase font-stencil text-2xl sm:text-3xl md:text-4xl tracking-[0.2em]
                 transition-all duration-200 outline-none
-                bg-black/80 border-4 border-white text-white
+                bg-black border-4 border-white text-white
                 hover:border-inkred-glow hover:text-white
                 shadow-[0_0_40px_rgba(0,0,0,0.9)]
                 hover:shadow-[0_0_45px_rgba(255,31,45,0.85),inset_0_0_25px_rgba(229,9,20,0.45)]
@@ -222,7 +216,7 @@ export const StageCinematic: React.FC<StageCinematicProps> = ({ onComplete }) =>
               </span>
             </button>
 
-            <span className="font-mono text-xs text-neutral-400 tracking-widest mt-4 uppercase">
+            <span className="font-mono text-xs text-neutral-300 tracking-widest mt-5 px-3 py-1 bg-black/70 border border-neutral-700 uppercase">
               [ CLICK TO INITIATE SCENE 2 PROTOCOL ]
             </span>
           </motion.div>
