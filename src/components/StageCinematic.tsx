@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { sound } from '../audioEngine';
-import { Volume2, VolumeX, FastForward, ArrowRight, Crosshair, ShieldAlert } from 'lucide-react';
+import { ArrowRight, Crosshair, ShieldAlert } from 'lucide-react';
 
 type CinematicPhase = 
   | 'SCENE_1'
@@ -19,25 +19,8 @@ export const StageCinematic: React.FC<StageCinematicProps> = ({ onComplete }) =>
   const [isMuted, setIsMuted] = useState(true);
   const [isFlashing, setIsFlashing] = useState(false);
   const [isBlackout, setIsBlackout] = useState(false);
-  const [showUnmuteHint, setShowUnmuteHint] = useState(true);
 
   const videoRef = useRef<HTMLVideoElement>(null);
-
-  // Synchronize audio engine with user mute preference
-  const toggleSound = () => {
-    const nextMuted = !isMuted;
-    setIsMuted(nextMuted);
-    if (videoRef.current) {
-      videoRef.current.muted = nextMuted;
-    }
-    if (nextMuted) {
-      if (!sound.getMuted()) sound.toggleMute();
-    } else {
-      if (sound.getMuted()) sound.toggleMute();
-      sound.getContext();
-      setShowUnmuteHint(false);
-    }
-  };
 
   // Attempt video playback and handle browser autoplay restrictions gracefully
   useEffect(() => {
@@ -53,7 +36,6 @@ export const StageCinematic: React.FC<StageCinematicProps> = ({ onComplete }) =>
           if (videoRef.current) {
             videoRef.current.muted = true;
             setIsMuted(true);
-            setShowUnmuteHint(true);
             videoRef.current.play().catch(() => {});
           }
         });
@@ -103,25 +85,6 @@ export const StageCinematic: React.FC<StageCinematicProps> = ({ onComplete }) =>
     }, 800);
   };
 
-  // Skip button handler to quickly advance flow
-  const handleSkip = () => {
-    sound.playTechClick(1.4);
-    if (phase === 'SCENE_1') {
-      if (videoRef.current && videoRef.current.duration) {
-        videoRef.current.currentTime = Math.max(0, videoRef.current.duration - 0.1);
-        videoRef.current.pause();
-      }
-      setPhase('SCENE_1_ENDED');
-    } else if (phase === 'SCENE_1_ENDED') {
-      setPhase('SCENE_2');
-    } else if (phase === 'SCENE_2') {
-      setPhase('NAME_REVEAL');
-    } else if (phase === 'NAME_REVEAL') {
-      setPhase('SCENE_3');
-    } else if (phase === 'SCENE_3') {
-      triggerTransitionToClueboard();
-    }
-  };
 
   // Determine current video source
   const getVideoSrc = () => {

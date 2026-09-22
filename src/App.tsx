@@ -8,10 +8,6 @@ import { StageCamcorder } from './components/StageCamcorder';
 export function App() {
   const [stage, setStage] = useState<GameStage>('STAGE_CINEMATIC');
 
-  const goToCinematic = () => {
-    setStage('STAGE_CINEMATIC');
-  };
-
   const goToClueboard = () => {
     setStage('STAGE_CLUEBOARD');
   };
