@@ -5,31 +5,19 @@ import type { EvidenceItem } from '../types';
 import { EvidenceCard } from './EvidenceCard';
 import { InspectionModal } from './InspectionModal';
 import { sound } from '../audioEngine';
-import { Volume2, VolumeX, RotateCcw, Crosshair, FileSearch, ShieldCheck } from 'lucide-react';
+import { Crosshair, FileSearch } from 'lucide-react';
 
 interface StageClueboardProps {
-  onRestart: () => void;
   onOpenArchive: () => void;
 }
 
-export const StageClueboard: React.FC<StageClueboardProps> = ({ onRestart, onOpenArchive }) => {
+export const StageClueboard: React.FC<StageClueboardProps> = ({ onOpenArchive }) => {
   const [selectedEvidence, setSelectedEvidence] = useState<EvidenceItem | null>(null);
-  const [inspectedIds, setInspectedIds] = useState<Set<string>>(new Set());
-  const [isMuted, setIsMuted] = useState(sound.getMuted());
+  const [, setInspectedIds] = useState<Set<string>>(new Set());
   const boardRef = useRef<HTMLDivElement>(null);
-
-  // Timer counter for detective clock
-  const [time, setTime] = useState('22:14:00');
 
   useEffect(() => {
     sound.startAmbience();
-
-    const interval = setInterval(() => {
-      const now = new Date();
-      setTime(now.toTimeString().split(' ')[0]);
-    }, 1000);
-
-    return () => clearInterval(interval);
   }, []);
 
   const handleCardClick = (evidence: EvidenceItem) => {
@@ -39,11 +27,6 @@ export const StageClueboard: React.FC<StageClueboardProps> = ({ onRestart, onOpe
 
   const handleCloseModal = () => {
     setSelectedEvidence(null);
-  };
-
-  const toggleSound = () => {
-    const muted = sound.toggleMute();
-    setIsMuted(muted);
   };
 
   // Find evidence by ID for SVG thread connections
@@ -120,37 +103,7 @@ export const StageClueboard: React.FC<StageClueboardProps> = ({ onRestart, onOpe
           </div>
         </div>
 
-        {/* HUD Info Badges */}
-        <div className="flex items-center gap-4 font-mono text-xs">
-          <div className="hidden md:flex items-center gap-2 px-3 py-1 bg-neutral-900 border border-neutral-800 text-neutral-300">
-            <ShieldCheck className="w-3.5 h-3.5 text-inkred" />
-            <span>EXAMINED: {inspectedIds.size}/{EVIDENCE_LIST.length}</span>
-          </div>
 
-          <div className="hidden lg:flex items-center gap-2 px-3 py-1 bg-neutral-900 border border-neutral-800 text-neutral-400">
-            <span>CHRONO: {time}</span>
-          </div>
-
-          <button
-            onClick={toggleSound}
-            className="p-2 bg-neutral-900 border border-neutral-700 hover:border-inkred text-stark transition-colors"
-            title="Toggle Sound FX / Ambience"
-          >
-            {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4 text-inkred" />}
-          </button>
-
-          <button
-            onClick={() => {
-              sound.playTechClick(0.9);
-              onRestart();
-            }}
-            className="flex items-center gap-1.5 px-3 py-1 bg-neutral-900 border border-neutral-700 hover:border-inkred hover:text-inkred text-stark text-xs transition-colors font-mono uppercase tracking-wider"
-            title="Reset Game"
-          >
-            <RotateCcw className="w-3.5 h-3.5" />
-            <span>RESTART</span>
-          </button>
-        </div>
       </div>
 
       {/* Diagonal stylized crime scene hazard tape across bottom-left */}

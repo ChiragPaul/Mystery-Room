@@ -20,10 +20,6 @@ export function App() {
     setStage('STAGE_CLUEBOARD');
   };
 
-  const restartGame = () => {
-    setStage('STAGE_CINEMATIC');
-  };
-
   return (
     <main className="w-screen h-screen overflow-hidden select-none bg-black text-stark font-mono relative">
       <AnimatePresence mode="wait">
@@ -50,7 +46,7 @@ export function App() {
             transition={{ duration: 0.6 }}
             className="w-full h-full"
           >
-            <StageClueboard onRestart={restartGame} onOpenArchive={goToCamcorder} />
+            <StageClueboard onOpenArchive={goToCamcorder} />
           </motion.div>
         )}
 
